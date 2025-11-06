@@ -1,0 +1,26 @@
+/* hero block + CTA + status-bar anchor spacing */
+.hero {
+  text-align: center;
+  padding: 9rem 2rem 5rem;
+  position: relative;
+  z-index: 1;
+}
+.title {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.subtitle {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hero .actions {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}

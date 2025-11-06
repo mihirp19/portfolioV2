@@ -1,0 +1,17 @@
+/* Order matters: base first, then layout, then components */
+@import "./styles/global.css";
+@import "./styles/background.css";
+
+/* UI chrome */
+@import "./styles/navbar.css";
+@import "./styles/hero.css";
+@import "./styles/statusbar.css";
+
+/* Content sections */
+@import "./styles/experience.css";
+@import "./styles/skills.css";
+@import "./styles/projects.css";
+@import "./styles/hobbies.css";
+@import "./styles/contact.css";
+@import "./styles/resume.css";
+@import "./styles/footer.css";

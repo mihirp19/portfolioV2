@@ -1,0 +1,423 @@
+/* =========================================
+   PROJECTS — Section Layout
+   ========================================= */
+.projects {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.projects-rail {
+  position: relative;
+  margin-top: 1rem;
+}
+
+/* =========================================
+   Horizontal Scroll Row
+   ========================================= */
+.projects-row {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0.25rem 0.8rem;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-row::-webkit-scrollbar {
+  height: 8px;
+}
+.projects-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+.projects-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =========================================
+   Scroll Arrows
+   ========================================= */
+.rail-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.rail-arrow:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.rail-arrow--left {
+  left: -6px;
+}
+.rail-arrow--right {
+  right: -6px;
+}
+
+.rail-arrow[disabled] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* =========================================
+   Rail Edge Fade
+   ========================================= */
+.rail-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 54px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.rail-fade--left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(20, 20, 20, 0.8), transparent);
+  border-radius: 12px 0 0 12px;
+}
+
+.rail-fade--right {
+  right: 0;
+  background: linear-gradient(270deg, rgba(20, 20, 20, 0.8), transparent);
+  border-radius: 0 12px 12px 0;
+}
+
+/* =========================================
+   Terminal-style Project Card
+   ========================================= */
+.proj-card {
+  flex: 0 0 512px; /* —— W I D E R  —— */
+  scroll-snap-align: start;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: radial-gradient(
+      120% 120% at 0% 0%,
+      rgba(255, 255, 255, 0.06),
+      transparent 40%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02)
+    ),
+    /* subtle grid */
+      linear-gradient(transparent 23px, rgba(255, 255, 255, 0.035) 24px),
+    linear-gradient(90deg, transparent 23px, rgba(255, 255, 255, 0.035) 24px),
+    #101215;
+
+  background-size: auto, auto, 24px 24px, 24px 24px, auto;
+
+  padding: 0;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.22s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.proj-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================
+   Terminal-style Header
+   ========================================= */
+.term-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+
+  border-radius: 14px 14px 0 0;
+}
+
+.term-head .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+.term-head .dot.red {
+  background: #ef4444;
+}
+.term-head .dot.yellow {
+  background: #f59e0b;
+}
+.term-head .dot.green {
+  background: #22c55e;
+}
+
+.term-path {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  opacity: 0.9;
+}
+
+/* =========================================
+   Header Row
+   ========================================= */
+.proj-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.8rem 0.9rem 0.2rem 0.9rem;
+}
+
+.verb-pill {
+  font-size: 0.78rem;
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.28);
+
+  padding: 0.18rem 0.45rem;
+  border-radius: 8px;
+}
+
+.proj-title {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+/* =========================================
+   Project Blurb
+   ========================================= */
+.proj-blurb {
+  color: #d9dee8;
+  padding: 0.3rem 1rem 0.6rem 1rem;
+  margin: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.48;
+}
+
+/* =========================================
+   Stack Tags
+   ========================================= */
+.proj-stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.proj-stack li {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  color: #d1d5db;
+
+  padding: 0.18rem 0.45rem;
+
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   Toolbar (actions)
+   ========================================= */
+.proj-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  padding: 0.6rem 1rem 0.4rem 1rem;
+}
+
+/* =========================================
+   Code Block
+   ========================================= */
+
+/* ---------- Fix: stop inherited centering ---------- */
+.proj-card,
+.proj-code {
+  text-align: left; /* critical: prevent centering */
+}
+
+/* ---------- Clean, aligned JSON block ---------- */
+.proj-code {
+  background: #0b0e12;
+  color: #a5b4fc;
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  display: block;
+  margin: 0;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+
+  white-space: pre; /* keep indentation exactly */
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  tab-size: 2;
+  -moz-tab-size: 2;
+  letter-spacing: 0;
+  font-variant-ligatures: none; /* avoid ligature spacing weirdness */
+  font-kerning: none;
+  text-rendering: optimizeSpeed;
+}
+
+/* optional subtle grid backdrop */
+.proj-code {
+  background-image: linear-gradient(
+      transparent 23px,
+      rgba(255, 255, 255, 0.03) 24px
+    ),
+    linear-gradient(90deg, transparent 23px, rgba(255, 255, 255, 0.03) 24px),
+    #0b0e12;
+  background-size: 24px 24px, 24px 24px, auto;
+}
+
+/* scrollbar polish */
+.proj-code::-webkit-scrollbar {
+  height: 8px;
+}
+.proj-code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+
+/* =========================================
+   PROJECT LOG (description)
+   ========================================= */
+.proj-log {
+  list-style: none;
+
+  margin: 0.6rem 1rem 1rem;
+  padding: 0.55rem 0.6rem;
+
+  background: rgba(16, 18, 21, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* one log row */
+.proj-log li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  padding: 0.52rem 0.3rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+
+  flex-wrap: nowrap;
+}
+
+.proj-log li:last-child {
+  border-bottom: none;
+}
+
+/* LVL badge */
+.proj-log .lvl {
+  min-width: 64px;
+  white-space: nowrap;
+
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+
+  padding: 0.22rem 0.48rem;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* message */
+.proj-log .msg {
+  flex: 1 1 auto;
+  max-width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: #d9dee8;
+}
+
+/* color variants */
+.proj-log .lvl.info {
+  color: #93c5fd;
+  background: rgba(147, 197, 253, 0.14);
+  border-color: rgba(147, 197, 253, 0.32);
+}
+
+.proj-log .lvl.perf {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.proj-log .lvl.api {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.16);
+  border-color: rgba(251, 191, 36, 0.32);
+}
+
+.proj-log .lvl.ux {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.16);
+  border-color: rgba(96, 165, 250, 0.32);
+}
+
+.proj-log .lvl.web3 {
+  color: #c4b5fd;
+  background: rgba(167, 139, 250, 0.16);
+  border-color: rgba(167, 139, 250, 0.32);
+}
+
+.proj-log .lvl.sec {
+  color: #fca5a5;
+  background: rgba(252, 165, 165, 0.16);
+  border-color: rgba(252, 165, 165, 0.32);
+}
+
+.proj-log .lvl.proto {
+  color: #f472b6;
+  background: rgba(244, 114, 182, 0.16);
+  border-color: rgba(244, 114, 182, 0.32);
+}

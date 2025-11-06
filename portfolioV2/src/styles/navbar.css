@@ -1,0 +1,66 @@
+/* centered glass navbar; macOS dock scaling handled by JS */
+.navbar {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  gap: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 0.8rem 2.5rem;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s, background 0.25s;
+}
+.navbar:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(-50%) scale(1.02);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-item {
+  display: inline-block;
+  transition: transform 0.18s ease-out;
+  transform-origin: bottom center;
+  will-change: transform;
+}
+.nav-links .nav-item a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: #eaeaea;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s, text-shadow 0.25s;
+}
+.nav-links .nav-item a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+}
+.nav-links .nav-item a:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus-1), var(--ring-focus-2);
+  border-radius: 12px;
+}
+
+@media (pointer: coarse) {
+  .nav-item,
+  .nav-links .nav-item a {
+    transform: none !important;
+  }
+}

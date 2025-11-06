@@ -1,0 +1,179 @@
+/* ================================
+   GLOBAL BASE + TOKENS + UTILITIES
+   ================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-blur: 12px;
+
+  --text: #f2f2f2;
+  --muted: #ccc;
+
+  --panel-bg: rgba(20, 20, 20, 0.55);
+
+  --shadow-1: 0 10px 25px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 12px 30px rgba(0, 0, 0, 0.45);
+  --ring-focus-1: 0 0 0 3px rgba(255, 255, 255, 0.18);
+  --ring-focus-2: 0 0 0 6px rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: "Poppins", "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* fixed-navbar offset for anchor targets */
+section[id] {
+  scroll-margin-top: 120px;
+}
+
+/* glass button primitive (shared) */
+.btn,
+.btn:link,
+.btn:visited,
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  box-shadow: var(--shadow-1), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: transform 0.2s, box-shadow 0.25s, background 0.25s,
+    border-color 0.25s, color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.btn::after,
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -120%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.45s ease;
+}
+.btn:hover::after,
+.cta:hover::after {
+  left: 120%;
+}
+.btn:hover,
+.cta:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: var(--shadow-2), 0 0 18px rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+.btn:active,
+.cta:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4),
+    0 0 8px rgba(255, 255, 255, 0.12) inset;
+}
+.btn--sm {
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+.btn--lg {
+  padding: 0.95rem 1.6rem;
+  border-radius: 14px;
+  font-size: 1.05rem;
+}
+.btn--primary {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.06)
+  );
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.btn__icon {
+  width: 1.1em;
+  height: 1.1em;
+  display: inline-block;
+}
+.btn[disabled],
+.btn.is-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.btn:focus-visible,
+.cta:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus-1), var(--ring-focus-2);
+}
+
+/* section shell */
+.section {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem 3rem;
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+  color: #f1f1f1;
+  transition: background 0.3s, transform 0.3s;
+}
+.section:hover {
+  background: rgba(30, 30, 30, 0.65);
+  transform: translateY(-4px);
+}
+
+/* monospace utility */
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+}
+
+/* accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
